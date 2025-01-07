@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resume;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -28,9 +29,16 @@ class ResumeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request):RedirectResponse
     {
-        //
+        // I don't think much validation is necessary
+        $validated = $request->validate([
+        'resumeName'=>'required|string|max:255',
+        'name'=>'required|string|max:255',
+        'email'=>'email|max:255',
+        ]);
+        $request->user()->resumes()->create($validated);
+        return redirect(route('resume.index'));
     }
 
     /**
