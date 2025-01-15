@@ -9,7 +9,7 @@ class Resume extends Model
     protected $fillable = [
         "resumeName",
         "name",
-        "contactName",
+        "contactNumber",
         "email",
         "socialLinks",
         "education",

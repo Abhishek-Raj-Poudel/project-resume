@@ -22,8 +22,8 @@ export default function Index({ }) {
         achievements: [],
     })
 
-    const handleChange =(key:any )=> (e:ChangeEvent<HTMLInputElement>) => {
-         setData(key, e.target.value)
+    const handleChange = (key: any) => (e: ChangeEvent<HTMLInputElement>) => {
+        setData(key, e.target.value)
     }
 
     const submit = async (e: any) => {
@@ -72,6 +72,16 @@ export default function Index({ }) {
                                 onChange={handleChange("email")}
                                 id='email' type='text' placeholder='jon@doe.com' />
                             {errors.email && <span className='text-red-500'>{errors.email}</span>}
+                        </div>
+
+                        {/*Your email*/}
+                        <div>
+                            <Label htmlFor="contactNumber">Contact Naumber</Label>
+                            <Input
+                                value={data.contactNumber}
+                                onChange={handleChange("contactNumber")}
+                                id='contactNumber' type='number' placeholder='+977-98xxxxxxxx' />
+                            {errors.contactNumber && <span className='text-red-500'>{errors.contactNumber}</span>}
                         </div>
 
                         <PrimaryButton className='w-fit' disabled={processing} >Create</PrimaryButton>

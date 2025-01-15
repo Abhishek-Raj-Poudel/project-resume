@@ -13,9 +13,9 @@ class ResumeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():Response
+    public function index(): Response
     {
-        return Inertia::render('Resumes/Index',[]);
+        return Inertia::render('Resumes/Index', []);
     }
 
     /**
@@ -29,16 +29,18 @@ class ResumeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         // I don't think much validation is necessary
         $validated = $request->validate([
-        'resumeName'=>'required|string|max:255',
-        'name'=>'required|string|max:255',
-        'email'=>'email|max:255',
+            'resumeName' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'email|max:255',
+            'contactNumber' => 'string|regex:/^[0-9]{10}$/|max:20',
+
         ]);
         $request->user()->resumes()->create($validated);
-        return redirect(route('resume.index'));
+        return redirect(route('resumes.index'));
     }
 
     /**

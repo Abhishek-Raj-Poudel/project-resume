@@ -11,11 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resumes', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('resumeName');
-            $table->string('name');
+        Schema::table('resumes', function (Blueprint $table) {
             $table->string('contactNumber', 20)->nullable()->change();
             $table->string('email')->nullable()->change();
             $table->json('socialLinks')->nullable()->change();
@@ -25,7 +21,6 @@ return new class extends Migration
             $table->json('workExperience')->nullable()->change();
             $table->json('certification')->nullable()->change();
             $table->json('achievements')->nullable()->change();
-            $table->timestamps();
         });
     }
 
@@ -34,6 +29,17 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resumes');
+        Schema::table('resumes', function (Blueprint $table) {
+            $table->string('contactNumber', 20)->nullable(false)->change();
+            $table->string('email')->nullable(false)->change();
+            $table->json('socialLinks')->nullable(false)->change();
+            $table->json('education')->nullable(false)->change();
+            $table->json('technicalSkill')->nullable(false)->change();
+            $table->json('projectExperience')->nullable(false)->change();
+            $table->json('workExperience')->nullable(false)->change();
+            $table->json('certification')->nullable(false)->change();
+            $table->json('achievements')->nullable(false)->change();
+            //
+        });
     }
 };
