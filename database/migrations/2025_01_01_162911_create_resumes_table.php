@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('resumeName');
-            $table->string('name');
-            $table->string('contactNumber', 20)->nullable()->change();
+
+            $table->foreignId('client_id')->constrained('users')->cascadeOnDelete();
+            $table->string('resume_name');
+            $table->string('full_name');
+            $table->string('contact_number', 20)->nullable()->change();
             $table->string('email')->nullable()->change();
-            $table->json('socialLinks')->nullable()->change();
-            $table->json('education')->nullable()->change();
-            $table->json('technicalSkill')->nullable()->change();
-            $table->json('projectExperience')->nullable()->change();
-            $table->json('workExperience')->nullable()->change();
-            $table->json('certification')->nullable()->change();
-            $table->json('achievements')->nullable()->change();
+            $table->foreignId('social_ids')->nullable()->constrained('socials')->cascadeOnDelete();
+            $table->foreignId('education_ids')->nullable()->constrained('educations')->cascadeOnDelete();
+            $table->foreignId('skill_ids')->nullable()->constrained('skills')->cascadeOnDelete();
+            $table->foreignId('project_ids')->nullable()->constrained('projects')->cascadeOnDelete();
+            $table->foreignId('certification_ids')->nullable()->constrained('certifications')->cascadeOnDelete();
+            $table->string('resume_name');
+            $table->foreignId('work_experience_ids')->nullable()->constrained('works')->cascadeOnDelete();
             $table->timestamps();
         });
     }
