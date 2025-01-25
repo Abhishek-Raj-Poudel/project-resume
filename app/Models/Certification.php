@@ -8,6 +8,7 @@ class Certification extends Model
 {
 
     protected $fillable = [
+        "resume_id",
         "title",
         "institution_name",
         "completed_at",
