@@ -12,6 +12,7 @@ import SocialLinks from '@/Components/Resume/SocialLinks';
 export default function Index({ }) {
     //we don't want to prop drill so we use zustand for that
     const { data, setData } = resumeStore()
+    console.log(data)
 
     const { post, processing, reset, errors } = useForm<Resume>();
 
