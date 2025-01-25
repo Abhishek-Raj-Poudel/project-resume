@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('resume_id')->constrained('resumes')->cascadeOnDelete();
+
             $table->string('title');
             $table->string('skill_category');
 

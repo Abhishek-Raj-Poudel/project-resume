@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('resume_id')->constrained('resumes')->cascadeOnDelete();
+
             $table->string('title');
             $table->string('url');
 

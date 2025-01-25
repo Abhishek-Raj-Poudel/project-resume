@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('educations', function (Blueprint $table) {
             $table->id();
+
+
+            $table->foreignId('resume_id')->constrained('resumes')->cascadeOnDelete();
 
             $table->string('institution_name');
             $table->string('location');
             $table->string('course_name');
-            $table->string('started_at');
-            $table->string('ended_at');
+            $table->date('started_at');
+            $table->boolean('is_current');
+            $table->date('ended_at')->nullable();;
 
             $table->timestamps();
         });

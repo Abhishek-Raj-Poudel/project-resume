@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('resume_id')->constrained('resumes')->cascadeOnDelete();
+
             $table->string('job_title');
             $table->string('company_name');
             $table->string('content');
             $table->string('location');
             $table->date('started_at');
+            $table->boolean('is_current');
             $table->date('ended_at')->nullable();
 
             $table->timestamps();

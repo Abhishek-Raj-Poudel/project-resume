@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
 
+
+            $table->foreignId('resume_id')->constrained('resumes')->cascadeOnDelete();
+
             $table->string('title');
             $table->string('subtitle');
             $table->string('content');

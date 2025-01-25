@@ -19,13 +19,8 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('contact_number', 20)->nullable()->change();
             $table->string('email')->nullable()->change();
-            $table->foreignId('social_ids')->nullable()->constrained('socials')->cascadeOnDelete();
-            $table->foreignId('education_ids')->nullable()->constrained('educations')->cascadeOnDelete();
-            $table->foreignId('skill_ids')->nullable()->constrained('skills')->cascadeOnDelete();
-            $table->foreignId('project_ids')->nullable()->constrained('projects')->cascadeOnDelete();
-            $table->foreignId('certification_ids')->nullable()->constrained('certifications')->cascadeOnDelete();
-            $table->string('resume_name');
-            $table->foreignId('work_experience_ids')->nullable()->constrained('works')->cascadeOnDelete();
+            $table->string('achievements');
+
             $table->timestamps();
         });
     }
