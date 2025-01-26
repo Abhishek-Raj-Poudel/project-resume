@@ -22,26 +22,31 @@ class Resume extends Model
 
     public function socials()
     {
-        return $this->belongsTo(Social::class);
+        return $this->hasMany(Social::class);
     }
 
-    public function eductions()
+    public function education()
     {
-        return $this->belongsTo(Education::class);
+        return $this->hasMany(Education::class);
     }
 
     public function certifications()
     {
-        return $this->belongsTo(Certification::class);
+        return $this->hasMany(Certification::class);
     }
 
     public function works()
     {
-        return $this->belongsTo(Work::class);
+        return $this->hasMany(Work::class);
     }
 
     public function skills()
     {
-        return $this->belongsTo(Skill::class);
+        return $this->hasMany(Skill::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
     }
 }

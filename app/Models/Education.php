@@ -9,6 +9,7 @@ class Education extends Model
     protected $fillable = [
         "resume_id",
         "institution_name",
+        "location",
         "course_name",
         "started_at",
         "is_current",

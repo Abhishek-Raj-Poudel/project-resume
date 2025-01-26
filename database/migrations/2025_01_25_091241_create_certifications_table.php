@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('institution_name');
             $table->string('completed_at');
+            $table->string('certification_link');
 
             $table->timestamps();
 

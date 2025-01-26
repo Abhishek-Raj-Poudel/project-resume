@@ -48,7 +48,14 @@ class ResumeController extends Controller
      */
     public function show(Resume $resume)
     {
-        //
+        $resume->load('socials');
+        $resume->load('education');
+        $resume->load('certifications');
+        $resume->load('works');
+        $resume->load('skills');
+        $resume->load('projects');
+        echo $resume;
+        return Inertia::render('Resumes/SingleResume', ['resume' => $resume]);
     }
 
     /**

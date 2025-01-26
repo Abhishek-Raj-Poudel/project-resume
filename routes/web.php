@@ -29,4 +29,7 @@ Route::resource('resumes', ResumeController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+
+Route::get('/resumes/{resume}', [ResumeController::class, 'show'])->name('resumes.show');
+
 require __DIR__ . '/auth.php';

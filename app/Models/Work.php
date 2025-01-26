@@ -8,6 +8,7 @@ class Work extends Model
 {
     protected $fillable = [
         'resume_id',
+        'company_name',
         'job_title',
         'content',
         'location',

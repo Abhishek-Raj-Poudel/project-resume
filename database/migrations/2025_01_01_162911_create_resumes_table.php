@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained('users')->cascadeOnDelete();
             $table->string('resume_name');
             $table->string('full_name');
-            $table->string('contact_number', 20)->nullable()->change();
-            $table->string('email')->nullable()->change();
+            $table->string('contact_number', 20)->nullable();
+            $table->string('email')->nullable();
             $table->string('achievements');
 
             $table->timestamps();
